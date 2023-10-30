@@ -4,10 +4,13 @@ Module base_model
 Contains a Class that defines all common attributes or
 methods for other classes
 """
-
+from uuid import uuid4
 from datetime import datetime
+from models import storage
 import uuid
-import models
+import json
+import sys
+import os.path
 
 
 class BaseModel():
@@ -17,18 +20,19 @@ class BaseModel():
         '''
         initializes the values
         '''
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-
         if kwargs:
-            for key, value in kwargs.items():
-                if key == 'created_at' or key == 'updated_at':
-                    value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
-                if key != '__class__':
-                    setattr(self, key, value)
+            dtf = '%Y-%m-%dT%H:%M:%S.%f'
+            k_dict = kwargs.copy()
+            del k_dict["__class__"]
+            for key in k_dict:
+                if ("created_at" == key or "updated_at" == key):
+                    k_dict[key] = datetime.strptime(k_dict[key], dtf)
+            self.__dict__ = k_dict
         else:
-            models.storage.new(self)
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            storage.new(self)
 
     def __str__(self):
         '''
@@ -37,7 +41,7 @@ class BaseModel():
         return ('[{}] ({}) {}'.format(
             self.__class__.__name__,
             self.id,
-            self.__dict__))
+            self.__class__.__dict__))
 
     def save(self):
         '''
@@ -45,15 +49,30 @@ class BaseModel():
         with the current datetime
         '''
         self.updated_at = datetime.now()
-        models.storage.save(self)
+        storage.save()
 
     def to_dict(self):
         '''
         returns a dictionary containing all keysvalues
         of __dict__ of the instance
         '''
-        dic = self.__dict__.copy()
-        dic['__class__'] = self.__class__.__name__
-        dic['created_at'] = self.created_at.isoformat()
-        dic['updated_at'] = self.updated_at.isoformat()
+        dic = {}
+        dic["__class__"] = self.__class__.__name__
+        for k, v in self.__dict__.items():
+            if isinstance(v, (datetime, )):
+                dic[k] = v.isoformat()
+            else:
+                dic[k] = v
         return dic
+
+    def to_json(self):
+        '''
+        returns a json containing all keysvalues
+        of __dict__ of the instance
+        '''
+        my_json = self.__dict__.copy()
+        my_json.update({'created_at': self.created_at.strftime(self.dtf)})
+        my_json.update({'__class__': str(self.__class__.__name__)})
+        if hasattr(self, 'updated_at'):
+            my_json.update({'updated_at': self.updated_at.strftime(self.dtf)})
+        return my_json
