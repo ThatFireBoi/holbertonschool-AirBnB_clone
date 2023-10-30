@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""""""
+"""Serializes instances to JSON file and deserializes JSON file to instances"""
 import json
 from os.path import isfile
 
