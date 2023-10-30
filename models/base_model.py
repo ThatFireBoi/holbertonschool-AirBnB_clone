@@ -22,7 +22,7 @@ class BaseModel():
             k_dict = kwargs.copy()
             del k_dict['__class__']
             for key in k_dict:
-                if ("created_at" == key or "update_at == key"):
+                if ("created_at == key" or "update_at == key"):
                     k_dict[key] = datetime.strptime(k_dict[key], dtf)
             self.__dict__ = k_dict
         else:
