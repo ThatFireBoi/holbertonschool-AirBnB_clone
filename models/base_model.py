@@ -31,7 +31,7 @@ class BaseModel():
         return ('[{}] ({}) {}'.format(
             self.__class__.__name__,
             self.id,
-            self.__class__.__dict__))
+            self.__dict__))
 
     def save(self):
         '''
@@ -39,7 +39,6 @@ class BaseModel():
         with the current datetime
         '''
         self.updated_at = datetime.now()
-        storage.save()
 
     def to_dict(self):
         '''
