@@ -4,15 +4,11 @@ Module base_model
 Contains a Class that defines all common attributes or
 methods for other classes
 """
-from uuid import uuid4
 from datetime import datetime
-from models import storage
 import uuid
-import sys
-import os.path
 
 
-class BaseModel():
+class BaseModel:
     ''' a base class for other classes '''
 
     def __init__(self):
