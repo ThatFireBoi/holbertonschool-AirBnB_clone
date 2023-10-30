@@ -14,7 +14,7 @@ from models.user import User
 
 
 class FileStorage:
-    """This class manages storage of HBnB models in JSON format
+    """This class manages storage of ABnB models in JSON format
 
     Attributes:
         __file_path (str): path to JSON file
