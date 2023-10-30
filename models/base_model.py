@@ -20,7 +20,6 @@ class BaseModel():
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
-        models.storage.new(self)
 
         if kwargs:
             for key, value in kwargs.items():
@@ -28,6 +27,8 @@ class BaseModel():
                     value = datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
                 if key != '__class__':
                     setattr(self, key, value)
+        else:
+            models.storage.new(self)
 
     def __str__(self):
         '''
