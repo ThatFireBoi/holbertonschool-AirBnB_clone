@@ -20,7 +20,7 @@ class BaseModel():
         '''
         initializes the values
         '''
-        self.id = str(uuid4())
+        self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
@@ -46,11 +46,8 @@ class BaseModel():
         returns a dictionary containing all keysvalues
         of __dict__ of the instance
         '''
-        dic = {}
-        dic["__class__"] = self.__class__.__name__
-        for k, v in self.__dict__.items():
-            if isinstance(v, (datetime, )):
-                dic[k] = v.isoformat()
-            else:
-                dic[k] = v
+        dic = self.__dict__.copy()
+        dic['__class__'] = self.__class__.__name__
+        dic['created_at'] = self.created_at.isoformat()
+        dic['updated_at'] = self.updated_at.isoformat()
         return dic
