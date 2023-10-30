@@ -13,7 +13,7 @@ from models.user import User
 
 
 class FileStorage:
-    """This class manages storage of hbnb models in JSON format
+    """This class manages storage of HBnB models in JSON format
 
     Attributes:
         __file_path (str): path to JSON file
@@ -41,7 +41,7 @@ class FileStorage:
 
     def reload(self):
         """Deserializes the JSON file to __objects (only if the JSON file
-        (__file_path) exists ; otherwise, do nothing. If the file doesn’t
+        (__file_path) exists); otherwise, do nothing. If the file doesn’t
         exist, no exception should be raised)
         """
         try:
