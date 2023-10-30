@@ -3,6 +3,7 @@
 
 
 import json
+from os import path
 from models.base_model import BaseModel
 from models.city import City
 from models.state import State
@@ -44,12 +45,10 @@ class FileStorage:
         (__file_path) exists); otherwise, do nothing. If the file doesn’t
         exist, no exception should be raised)
         """
-        try:
-            with open(FileStorage.__file_path, 'r') as f:
+        if path.exists(self.__file_path):
+            with open(self.__file_path, 'r') as f:
                 new_dict = json.load(f)
             for key, value in new_dict.items():
                 class_name = value['__class__']
                 del value['__class__']
                 self.new(eval(class_name)(**value))
-        except FileNotFoundError:
-            pass
