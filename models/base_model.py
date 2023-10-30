@@ -16,23 +16,14 @@ import os.path
 class BaseModel():
     ''' a base class for other classes '''
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self):
         '''
         initializes the values
         '''
-        if kwargs:
-            dtf = '%Y-%m-%dT%H:%M:%S.%f'
-            k_dict = kwargs.copy()
-            del k_dict["__class__"]
-            for key in k_dict:
-                if ("created_at" == key or "updated_at" == key):
-                    k_dict[key] = datetime.strptime(k_dict[key], dtf)
-            self.__dict__ = k_dict
-        else:
-            self.id = str(uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
-            storage.new(self)
+        self.id = str(uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+        storage.new(self)
 
     def __str__(self):
         '''
