@@ -8,6 +8,9 @@ import cmd
 class HBNBCommand(cmd.Cmd):
     """This class defines attributes and methods for the HBnB console"""
     prompt = "(hbnb) "
+    classes = {
+        "User"
+    }
 
     def emptyline(self):
         """Do nothing when empty line is entered"""
