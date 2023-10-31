@@ -12,15 +12,15 @@ import os
 
 
 class TestFileStorage(unittest.TestCase):
-    ''' Unittest for FileStorage class '''
+    """ Unittest for FileStorage class """
 
     def test_Instantiation(self):
-        ''' checks instance is of class BaseModel '''
+        """ checks instance is of class BaseModel """
         obj = FileStorage()
         self.assertIsInstance(obj, FileStorage)
 
     def test_Access(self):
-        ''' test read-write access permissions '''
+        """ test read-write access permissions """
         rd = os.access('models/engine/file_storage.py', os.R_OK)
         self.assertTrue(rd)
         wr = os.access('models/engine/file_storage.py', os.W_OK)
@@ -58,12 +58,12 @@ class TestFileStorage(unittest.TestCase):
         self.assertIs(a_storage.reload(), None)
 
     def test_funcdocs(self):
-        ''' testing functions docstring '''
+        """ testing functions docstring """
         for func in dir(FileStorage):
             self.assertTrue(len(func.__doc__) > 0)
 
     def test_save(self):
-        ''' tests save method'''
+        """ tests save method"""
         obj = FileStorage()
         new_obj = BaseModel()
         obj.new(new_obj)
