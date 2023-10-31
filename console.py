@@ -9,7 +9,13 @@ class HBNBCommand(cmd.Cmd):
     """This class defines attributes and methods for the HBnB console"""
     prompt = "(hbnb) "
     classes = {
-        "User"
+        "BaseModel",
+        "User",
+        "Place",
+        "State",
+        "City",
+        "Amenity",
+        "Review"
     }
 
     def emptyline(self):
