@@ -6,15 +6,15 @@ import cmd
 
 
 class HBNBCommand(cmd.Cmd):
+    """This class defines attributes and methods for the HBnB console"""
     prompt = "(hbnb) "
 
     def emptyline(self):
-        """Do nothing on empty input line."""
+        """Do nothing when empty line is entered"""
         pass
 
     def do_create(self, arg):
-        """Create a new instance of BaseModel, save it (to the JSON file)
-        and print the id."""
+        """Create command to create a new instance of BaseModel"""
         if arg == "":
             print("** class name missing **")
         elif arg != "BaseModel":
@@ -26,8 +26,7 @@ class HBNBCommand(cmd.Cmd):
             print(new_instance.id)
 
     def do_show(self, arg):
-        """Prints the string representation of an instance based on the
-        class name and id."""
+        """Show command to print string representation of an instance"""
         if arg == "":
             print("** class name missing **")
         else:
@@ -45,8 +44,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
 
     def do_destroy(self, arg):
-        """Deletes an instance based on the class name and id (save the
-        change into the JSON file)."""
+        """Destroy command to delete an instance"""
         if arg == "":
             print("** class name missing **")
         else:
@@ -65,8 +63,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
 
     def do_all(self, arg):
-        """Prints all string representation of all instances based or not
-        on the class name."""
+        """All command to print string representation of all instances"""
         from models import storage
         if arg == "":
             print([str(obj) for obj in storage.all().values()])
@@ -76,8 +73,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_update(self, arg):
-        """Updates an instance based on the class name and id by adding
-        or updating attribute (save the change into the JSON file)."""
+        """Update command to update an instance"""
         if arg == "":
             print("** class name missing **")
         else:
@@ -101,16 +97,16 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
 
     def do_quit(self, arg):
-        """Quit command to exit the program."""
+        """Quit command to exit the program"""
         return True
 
     def do_EOF(self, arg):
-        """EOF command to exit the program."""
+        """EOF command to exit the program"""
         print("")
         return True
 
     def do_help(self, arg):
-        """Help command to show available commands."""
+        """Help command to show available commands"""
         cmd.Cmd.do_help(self, arg)
 
 
