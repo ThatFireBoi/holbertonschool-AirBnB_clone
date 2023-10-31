@@ -38,10 +38,9 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
             else:
                 from models import storage
-                objects = storage.all()
                 key = "{}.{}".format(args[0], args[1])
-                if key in objects:
-                    print(objects[key])
+                if key in storage.all():
+                    print(storage.all()[key])
                 else:
                     print("** no instance found **")
 
@@ -58,10 +57,9 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
             else:
                 from models import storage
-                objects = storage.all()
                 key = "{}.{}".format(args[0], args[1])
-                if key in objects:
-                    del objects[key]
+                if key in storage.all():
+                    del storage.all()[key]
                     storage.save()
                 else:
                     print("** no instance found **")
@@ -70,11 +68,10 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of all instances based or not
         on the class name."""
         from models import storage
-        objects = storage.all()
         if arg == "":
-            print([str(v) for v in objects.values()])
+            print([str(obj) for obj in storage.all().values()])
         elif arg == "BaseModel":
-            print([str(v) for k, v in objects.items() if "BaseModel" in k])
+            print([str(obj) for obj in storage.all().values()])
         else:
             print("** class doesn't exist **")
 
@@ -91,27 +88,30 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
             else:
                 from models import storage
-                objects = storage.all()
                 key = "{}.{}".format(args[0], args[1])
-                if key in objects:
+                if key in storage.all():
                     if len(args) == 2:
                         print("** attribute name missing **")
                     elif len(args) == 3:
                         print("** value missing **")
                     else:
-                        setattr(objects[key], args[2], args[3])
-                        storage.save()
+                        setattr(storage.all()[key], args[2], args[3])
+                        storage.all()[key].save()
                 else:
                     print("** no instance found **")
 
     def do_quit(self, arg):
-        """Exit the program."""
+        """Quit command to exit the program."""
         return True
 
     def do_EOF(self, arg):
-        """Exit the program."""
-        print()
+        """EOF command to exit the program."""
+        print("")
         return True
+
+    def do_help(self, arg):
+        """Help command to show available commands."""
+        cmd.Cmd.do_help(self, arg)
 
 
 if __name__ == '__main__':
