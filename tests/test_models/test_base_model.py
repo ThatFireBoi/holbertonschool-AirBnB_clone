@@ -7,27 +7,28 @@ Unittest Module for BaseModel class
 
 
 class TestUser(unittest.TestCase):
-    ''' Unittest for BaseModel class '''
+    """Unittest for BaseModel class"""
 
     def test_object_Instantiation(self):
-        ''' instantiates class '''
+        """ instantiates class """
         self.basemodel = BaseModel()
 
     def test_checking_for_functions(self):
+        """ checks if docstring exist """
         self.assertIsNotNone(BaseModel.__doc__)
         self.assertIsNotNone(BaseModel.save.__doc__)
         self.assertIsNotNone(BaseModel.to_dict.__doc__)
 
     def testattr(self):
-        ''' test Class: User attributes '''
+        """ test Class: User attributes """
         self.basemodel = BaseModel()
         self.assertTrue(hasattr(self.basemodel, "created_at"))
         self.assertTrue(hasattr(self.basemodel, "updated_at"))
         self.assertFalse(hasattr(self.basemodel, "random_attr"))
         self.assertFalse(hasattr(self.basemodel, "name"))
         self.assertTrue(hasattr(self.basemodel, "id"))
-        self.basemodel.name = "Alice"
-        self.basemodel.age = "44"
+        self.basemodel.name = "Juan"
+        self.basemodel.age = "41"
         self.assertTrue(hasattr(self.basemodel, "name"))
         self.assertTrue(hasattr(self.basemodel, "age"))
         delattr(self.basemodel, "name")
@@ -37,13 +38,13 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.basemodel.__class__.__name__, "BaseModel")
 
     def testsave(self):
-        ''' testing method: save '''
+        """ testing method: save """
         self.basemodel = BaseModel()
         self.basemodel.save()
         self.assertTrue(hasattr(self.basemodel, "updated_at"))
 
     def teststr(self):
-        ''' testing __str__ return format of BaseModel '''
+        """ testing __str__ return format of BaseModel """
         self.basemodel = BaseModel()
         s = "[{}] ({}) {}".format(self.basemodel.__class__.__name__,
                                   str(self.basemodel.id),
@@ -51,6 +52,7 @@ class TestUser(unittest.TestCase):
         self.assertEqual(print(s), print(self.basemodel))
 
     def test_to_dict(self):
+        """ testing to_dict method"""
         base1 = BaseModel()
         base1_dict = base1.to_dict()
         self.assertEqual(base1.__class__.__name__, 'BaseModel')
