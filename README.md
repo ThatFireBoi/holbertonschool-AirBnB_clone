@@ -1,6 +1,8 @@
-# 0x00. AirBnB clone - The console
+# AirBnB clone V.1 - The console
 
 Foundations > Higher-level programming > AirBnB clone
+
+![image](https://github.com/ThatFireBoi/holbertonschool-AirBnB_clone/assets/132520554/1c84785b-851e-42b4-864c-55e6d1945a4d)
 
 ..............................................................................
 ..............................................................................
