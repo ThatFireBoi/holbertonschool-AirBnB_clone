@@ -83,6 +83,10 @@ Ran 52 tests in 0.021s
 OK
 ```
 
+## Flowchart
+
+![image](https://github.com/ThatFireBoi/holbertonschool-AirBnB_clone/assets/132520554/5fa83ec7-dc16-490b-968e-20253c79c016)
+
 ## Tasks
 
 ## 0. README, AUTHORS [ README.md, AUTHORS ]
