@@ -11,6 +11,7 @@ class HBNBCommand(cmd.Cmd):
     """Class that contains the entry point of the command interpreter."""
 
     prompt = "(hbnb) "
+    classes = ["BaseModel", "User"]
 
     def do_help(self, arg):
         """Help command to show the documentation of the commands."""
