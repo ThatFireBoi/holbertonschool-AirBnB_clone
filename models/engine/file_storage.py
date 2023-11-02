@@ -12,7 +12,9 @@ import os
 
 
 class FileStorage():
-    """Class that serializes instances to a JSON file and deserializes JSON file"""
+    """Class that serializes instances to a JSON file
+    and deserializes JSON file
+    """
     __file_path = "file.json"
     __objects = {}
 
