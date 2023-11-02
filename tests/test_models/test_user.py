@@ -77,7 +77,8 @@ class TestUser(unittest.TestCase):
 
     def test_str(self):
         self.assertEqual(str(self.my_user),
-                         "[User] ({}) {}".format(self.my_user.id, self.my_user.__dict__))
+                         "[User] ({}) {}".format(self.my_user.id,
+                                                 self.my_user.__dict__))
 
 
 if __name__ == "__main__":
