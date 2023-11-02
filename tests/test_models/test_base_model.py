@@ -11,13 +11,21 @@ Unittest Module for BaseModel class
 class TestUser(unittest.TestCase):
     """Unittest for BaseModel class"""
 
+    def setUp(self):
+        """ sets up an instance of BaseModel """
+        self.base_model = BaseModel()
+
     def setup(self):
         """ sets up an instance of BaseModel """
-        self.basemodel = BaseModel()
+
+        self.base_model = BaseModel()
+        self.base_model.name = "My First Base Model"
+        self.base_model.my_number = 89
+
 
     def test_object_Instantiation(self):
         """ instantiates class """
-        self.basemodel = BaseModel()
+        self.base_model = BaseModel()
 
     def test_checking_for_functions(self):
         """ checks if docstring exist """
@@ -27,35 +35,35 @@ class TestUser(unittest.TestCase):
 
     def testattr(self):
         """ test Class: User attributes """
-        self.basemodel = BaseModel()
-        self.assertTrue(hasattr(self.basemodel, "created_at"))
-        self.assertTrue(hasattr(self.basemodel, "updated_at"))
-        self.assertFalse(hasattr(self.basemodel, "random_attr"))
-        self.assertFalse(hasattr(self.basemodel, "name"))
-        self.assertTrue(hasattr(self.basemodel, "id"))
-        self.basemodel.name = "A"
-        self.basemodel.age = "89"
-        self.assertTrue(hasattr(self.basemodel, "name"))
-        self.assertTrue(hasattr(self.basemodel, "age"))
-        delattr(self.basemodel, "name")
-        self.assertFalse(hasattr(self.basemodel, "name"))
-        delattr(self.basemodel, "age")
-        self.assertFalse(hasattr(self.basemodel, "age"))
-        self.assertEqual(self.basemodel.__class__.__name__, "BaseModel")
+        self.base_model = BaseModel()
+        self.assertTrue(hasattr(self.base_model, "created_at"))
+        self.assertTrue(hasattr(self.base_model, "updated_at"))
+        self.assertFalse(hasattr(self.base_model, "random_attr"))
+        self.assertFalse(hasattr(self.base_model, "name"))
+        self.assertTrue(hasattr(self.base_model, "id"))
+        self.base_model.name = "A"
+        self.base_model.age = "89"
+        self.assertTrue(hasattr(self.base_model, "name"))
+        self.assertTrue(hasattr(self.base_model, "age"))
+        delattr(self.base_model, "name")
+        self.assertFalse(hasattr(self.base_model, "name"))
+        delattr(self.base_model, "age")
+        self.assertFalse(hasattr(self.base_model, "age"))
+        self.assertEqual(self.base_model.__class__.__name__, "BaseModel")
 
     def testsave(self):
         """ testing method: save """
-        self.basemodel = BaseModel()
-        self.basemodel.save()
-        self.assertTrue(hasattr(self.basemodel, "updated_at"))
+        self.base_model = BaseModel()
+        self.base_model.save()
+        self.assertTrue(hasattr(self.base_model, "updated_at"))
 
     def teststr(self):
         """ testing __str__ return format of BaseModel """
-        self.basemodel = BaseModel()
-        s = "[{}] ({}) {}".format(self.basemodel.__class__.__name__,
-                                  str(self.basemodel.id),
-                                  self.basemodel.__dict__)
-        self.assertEqual(print(s), print(self.basemodel))
+        self.base_model = BaseModel()
+        s = "[{}] ({}) {}".format(self.base_model.__class__.__name__,
+                                  str(self.base_model.id),
+                                  self.base_model.__dict__)
+        self.assertEqual(print(s), print(self.base_model))
 
     def test_to_dict(self):
         """ testing to_dict method"""
@@ -88,14 +96,16 @@ class TestUser(unittest.TestCase):
         self.assertIsInstance(bm.updated_at, datetime)
 
     def test_attribute_existence(self):
-        self.assertTrue(hasattr(self.base_model, "id"))
-        self.assertTrue(hasattr(self.base_model, "created_at"))
-        self.assertTrue(hasattr(self.base_model, "updated_at"))
+
+        self.assertTrue(hasattr(self, "id"))
+        self.assertTrue(hasattr(self, "created_at"))
+        self.assertTrue(hasattr(self, "updated_at"))
 
     def test_attribute_values(self):
-        self.assertIsInstance(self.base_model.id, str)
-        self.assertIsInstance(self.base_model.created_at, datetime)
-        self.assertIsInstance(self.base_model.updated_at, datetime)
+        self.assertIsInstance(self.id, str)
+        self.assertIsInstance(self.created_at, datetime)
+        self.assertIsInstance(self.updated_at, datetime)
+
 
     def test_methods(self):
         self.assertTrue(hasattr(BaseModel, "save"))
@@ -104,12 +114,12 @@ class TestUser(unittest.TestCase):
     def test_str(self):
         self.assertEqual(str(self.base_model),
                          "[BaseModel] ({}) {}".format(self.base_model.id,
-                                                      self.base_model.__dict__))
-
+ 
     def test_save(self):
         old_updated_at = self.base_model.updated_at
         self.my_base_model.save()
         self.assertNotEqual(old_updated_at, self.base_model.updated_at)
+
 
 
 if __name__ == '__main__':
