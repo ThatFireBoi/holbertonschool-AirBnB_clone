@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import unittest
 from models.state import State
+from models.base_model import BaseModel
 """
 Unittest Module for State class
 """
@@ -41,6 +42,23 @@ class TestUser(unittest.TestCase):
         s = "[{}] ({}) {}".format(self.state.__class__.__name__,
                                   str(self.state.id), self.state.__dict__)
         self.assertEqual(print(s), print(self.state))
+
+    def test_attribute_assignment(self):
+        self.my_state.name = "California"
+        self.assertEqual(self.my_state.name, "California")
+
+
+def test_methods(self):
+    self.assertTrue(hasattr(State, "save"))
+    self.assertTrue(hasattr(State, "to_dict"))
+
+
+def test_inheritance(self):
+    self.assertTrue(issubclass(State, BaseModel))
+
+
+def test_attribute_values(self):
+    self.assertEqual(self.my_state.name, "")
 
 
 if __name__ == '__main__':
