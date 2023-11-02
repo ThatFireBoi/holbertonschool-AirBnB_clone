@@ -44,8 +44,8 @@ class TestUser(unittest.TestCase):
         self.assertEqual(print(s), print(self.state))
 
     def test_attribute_assignment(self):
-        self.my_state.name = "California"
-        self.assertEqual(self.my_state.name, "California")
+        self.state.name = "California"
+        self.assertEqual(self.state.name, "California")
 
 
 def test_methods(self):
@@ -58,7 +58,7 @@ def test_inheritance(self):
 
 
 def test_attribute_values(self):
-    self.assertEqual(self.my_state.name, "")
+    self.assertEqual(self.state.name, "")
 
 
 if __name__ == '__main__':

@@ -16,6 +16,10 @@ from models.place import Place
 class TestPlace(unittest.TestCase):
     """ Unittest for Place class """
 
+    def setUp(self):
+        """ sets up an instance of Place """
+        self.my_place = Place()
+
     def test_attribute_existence(self):
         """ test that class Place has the required attributes"""
         self.assertTrue(hasattr(self.my_place, "city_id"))
