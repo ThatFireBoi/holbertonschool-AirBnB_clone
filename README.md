@@ -1,6 +1,8 @@
-# 0x00. AirBnB clone - The console
+# AirBnB clone V.1 - The console
 
 Foundations > Higher-level programming > AirBnB clone
+
+![image](https://github.com/ThatFireBoi/holbertonschool-AirBnB_clone/assets/132520554/1c84785b-851e-42b4-864c-55e6d1945a4d)
 
 ..............................................................................
 ..............................................................................
@@ -82,6 +84,10 @@ Ran 52 tests in 0.021s
 
 OK
 ```
+
+## Flowchart
+
+![image](https://github.com/ThatFireBoi/holbertonschool-AirBnB_clone/assets/132520554/5fa83ec7-dc16-490b-968e-20253c79c016)
 
 ## Tasks
 
