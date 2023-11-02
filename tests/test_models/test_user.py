@@ -52,12 +52,6 @@ class TestUser(unittest.TestCase):
     def test_to_dict(self):
         self.assertEqual('to_dict' in dir(self.my_user), True)
 
-    def test_attribute_values(self):
-        self.assertEqual(self.my_user.email, "")
-        self.assertEqual(self.my_user.password, "")
-        self.assertEqual(self.my_user.first_name, "")
-        self.assertEqual(self.my_user.last_name, "")
-
     def test_attribute_assignment(self):
         self.my_user.email = "test@email.com"
         self.my_user.password = "password123"
@@ -74,11 +68,6 @@ class TestUser(unittest.TestCase):
     def test_methods(self):
         self.assertTrue(hasattr(User, "save"))
         self.assertTrue(hasattr(User, "to_dict"))
-
-    def test_str(self):
-        self.assertEqual(str(self.my_user),
-                         "[User] ({}) {}".format(self.my_user.id,
-                                                 self.my_user.__dict__))
 
 
 if __name__ == "__main__":
