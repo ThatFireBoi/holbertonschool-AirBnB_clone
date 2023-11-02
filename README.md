@@ -316,6 +316,50 @@ Write all those classes that inherit from BaseModel:
 Update FileStorage to manage correctly serialization and deserialization of all our new classes: Place, State, City, Amenity and Review
 Update your command interpreter (console.py) to allow those actions: show, create, destroy, update and all with all classes created previously.
 
+$ ./console.py
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+
+(hbnb) all MyModel
+** class doesn't exist **
+(hbnb) show BaseModel
+** instance id missing **
+(hbnb) show BaseModel My_First_Model
+** no instance found **
+(hbnb) create BaseModel
+2f13f0f8-bb77-41e7-ba5a-21308e8aca38
+(hbnb) all BaseModel
+[BaseModel] (123) {'id': '123', 'created_at': datetime.datetime(2023, 11, 1, 16, 22, 1, 372753), 'updated_at': datetime.datetime(2023, 11, 1, 16, 22, 1, 372757)}
+[BaseModel] (2f13f0f8-bb77-41e7-ba5a-21308e8aca38) {'id': '2f13f0f8-bb77-41e7-ba5a-21308e8aca38', 'created_at': datetime.datetime(2023, 11, 2, 7, 50, 4, 191300), 'updated_at': datetime.datetime(2023, 11, 2, 7, 50, 4, 191353)}
+(hbnb) destroy
+** class name missing **
+(hbnb) update BaseModel 2f13f0f8-bb77-41e7-ba5a-21308e8aca38 first_name "Bety"
+(hbnb) show BaseModel 2f13f0f8-bb77-41e7-ba5a-21308e8aca38
+[BaseModel] (2f13f0f8-bb77-41e7-ba5a-21308e8aca38) {'id': '2f13f0f8-bb77-41e7-ba5a-21308e8aca38', 'created_at': datetime.datetime(2023, 11, 2, 7, 50, 4, 191300), 'updated_at': datetime.datetime(2023, 11, 2, 7, 50, 4, 191353), 'first_name': '"Bety"'}
+(hbnb) create BaseModel
+11ed04a1-a79a-48de-9d6b-f9cb099491ae
+[8:27 AM]
+(hbnb) all BaseModel
+[BaseModel] (123) {'id': '123', 'created_at': datetime.datetime(2023, 11, 1, 16, 22, 1, 372753), 'updated_at': datetime.datetime(2023, 11, 1, 16, 22, 1, 372757)}
+[BaseModel] (2f13f0f8-bb77-41e7-ba5a-21308e8aca38) {'id': '2f13f0f8-bb77-41e7-ba5a-21308e8aca38', 'created_at': datetime.datetime(2023, 11, 2, 7, 50, 4, 191300), 'updated_at': datetime.datetime(2023, 11, 2, 7, 50, 4, 191353), 'first_name': '"Bety"'}
+[BaseModel] (11ed04a1-a79a-48de-9d6b-f9cb099491ae) {'id': '11ed04a1-a79a-48de-9d6b-f9cb099491ae', 'created_at': datetime.datetime(2023, 11, 2, 7, 52, 45, 62503), 'updated_at': datetime.datetime(2023, 11, 2, 7, 52, 45, 62552)}
+(hbnb) destroy Basemodel 2f13f0f8-bb77-41e7-ba5a-21308e8aca38
+** class doesn't exist **
+(hbnb) destroy BaseModel 2f13f0f8-bb77-41e7-ba5a-21308e8aca38
+(hbnb) show BaseModel 2f13f0f8-bb77-41e7-ba5a-21308e8aca38
+** no instance found **
+(hbnb)
+(hbnb)
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  all  create  destroy  help  quit  show  update
+
+(hbnb)
 Contributors:
 
 1. Gabriel Castro
