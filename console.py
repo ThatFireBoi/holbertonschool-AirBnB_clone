@@ -8,6 +8,7 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
+from models.place import Place
 from models import storage
 
 
@@ -15,7 +16,8 @@ class HBNBCommand(cmd.Cmd):
     """Class that contains the entry point of the command interpreter."""
 
     prompt = "(hbnb) "
-    classes = ["BaseModel", "User", "State", "City", "Amenity", "Review"]
+    classes = ["BaseModel", "User", "State",
+               "City", "Amenity", "Review", "Place"]
 
     def do_help(self, arg):
         """Help command to show the documentation of the commands."""
@@ -39,7 +41,7 @@ class HBNBCommand(cmd.Cmd):
         and prints the id."""
         if not arg:
             print("** class name missing **")
-        elif arg not in ["BaseModel", "User", "State", "City", "Amenity", "Review"]:
+        elif arg not in ["BaseModel", "User", "State", "City", "Amenity", "Review", "Place"]:
             print("** class doesn't exist **")
         else:
             if arg == "BaseModel":
@@ -54,6 +56,8 @@ class HBNBCommand(cmd.Cmd):
                 new_instance = Amenity()
             elif arg == "Review":
                 new_instance = Review()
+            elif arg == "Place":
+                new_instance = Place()
             new_instance.save()
             print(new_instance.id)
 
@@ -63,7 +67,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
-        elif args[0] not in ["BaseModel", "User", "State", "City", "Amenity", "Review"]:
+        elif args[0] not in ["BaseModel", "User", "State", "City", "Amenity", "Review", "Place"]:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
@@ -80,7 +84,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
-        elif args[0] not in ["BaseModel", "User", "State", "City", "Amenity", "Review"]:
+        elif args[0] not in ["BaseModel", "User", "State", "City", "Amenity", "Review", "Place"]:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
@@ -95,7 +99,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """Prints all string representation of all instances based or not on
         the class name."""
-        if arg not in ["BaseModel", "User", "State", "City", "Amenity", "Review", ""]:
+        if arg not in ["BaseModel", "User", "State", "City", "Amenity", "Review", "Place", ""]:
             print("** class doesn't exist **")
         else:
             for key, value in storage.all().items():
@@ -111,7 +115,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
-        elif args[0] not in ["BaseModel", "User", "State", "City", "Amenity", "Review"]:
+        elif args[0] not in ["BaseModel", "User", "State", "City", "Amenity", "Review", "Place"]:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
