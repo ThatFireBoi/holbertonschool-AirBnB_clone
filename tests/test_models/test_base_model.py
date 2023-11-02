@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import unittest
 from models.base_model import BaseModel
+import datetime
 from datetime import datetime
 """
 Unittest Module for BaseModel class
@@ -13,8 +14,6 @@ class TestUser(unittest.TestCase):
     def setup(self):
         """ sets up an instance of BaseModel """
         self.basemodel = BaseModel()
-        self.basemodel.name = "My First Base Model"
-        self.basemodel.my_number = 89
 
     def test_object_Instantiation(self):
         """ instantiates class """
@@ -89,28 +88,28 @@ class TestUser(unittest.TestCase):
         self.assertIsInstance(bm.updated_at, datetime)
 
     def test_attribute_existence(self):
-        self.assertTrue(hasattr(self.my_base_model, "id"))
-        self.assertTrue(hasattr(self.my_base_model, "created_at"))
-        self.assertTrue(hasattr(self.my_base_model, "updated_at"))
+        self.assertTrue(hasattr(self.base_model, "id"))
+        self.assertTrue(hasattr(self.base_model, "created_at"))
+        self.assertTrue(hasattr(self.base_model, "updated_at"))
 
     def test_attribute_values(self):
-        self.assertIsInstance(self.my_base_model.id, str)
-        self.assertIsInstance(self.my_base_model.created_at, datetime)
-        self.assertIsInstance(self.my_base_model.updated_at, datetime)
+        self.assertIsInstance(self.base_model.id, str)
+        self.assertIsInstance(self.base_model.created_at, datetime)
+        self.assertIsInstance(self.base_model.updated_at, datetime)
 
     def test_methods(self):
         self.assertTrue(hasattr(BaseModel, "save"))
         self.assertTrue(hasattr(BaseModel, "to_dict"))
 
     def test_str(self):
-        self.assertEqual(str(self.my_base_model),
-                         "[BaseModel] ({}) {}".format(self.my_base_model.id,
-                                                      self.my_base_model.__dict__))
+        self.assertEqual(str(self.base_model),
+                         "[BaseModel] ({}) {}".format(self.base_model.id,
+                                                      self.base_model.__dict__))
 
     def test_save(self):
-        old_updated_at = self.my_base_model.updated_at
+        old_updated_at = self.base_model.updated_at
         self.my_base_model.save()
-        self.assertNotEqual(old_updated_at, self.my_base_model.updated_at)
+        self.assertNotEqual(old_updated_at, self.base_model.updated_at)
 
 
 if __name__ == '__main__':

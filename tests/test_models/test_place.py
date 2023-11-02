@@ -1,13 +1,10 @@
 #!/usr/bin/python3
+import unittest
+from models.place import Place
 """
 Unittest Module for Place
 """
 import unittest
-from models import storage
-from models.user import User
-from models.base_model import BaseModel
-from models.engine import file_storage
-from models.engine.file_storage import FileStorage
 import os
 import json
 from models.place import Place

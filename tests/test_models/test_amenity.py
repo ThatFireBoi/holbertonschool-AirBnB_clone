@@ -1,14 +1,6 @@
 #!/usr/bin/python3
 import unittest
 from models.amenity import Amenity
-from tests.test_models.test_base_model import test_basemodel
-import models
-from datetime import datetime
-from models.base_model import Base
-from models.base_model import BaseModel
-
-import unittest
-from models.amenity import Amenity
 
 """
 Unittest Module for Amenity class
