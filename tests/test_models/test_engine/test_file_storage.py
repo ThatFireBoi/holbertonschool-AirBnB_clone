@@ -9,6 +9,7 @@ from models.base_model import BaseModel
 from models.engine import file_storage
 from models.engine.file_storage import FileStorage
 import os
+import json
 
 
 class TestFileStorage(unittest.TestCase):
@@ -86,6 +87,36 @@ class TestFileStorage(unittest.TestCase):
         for key in dict2:
             key2 = key
         self.assertEqual(dict1[key1].to_dict(), dict2[key2].to_dict())
+
+    def test_attribute_existence(self):
+        self.assertTrue(hasattr(self.my_file_storage, "__file_path"))
+        self.assertTrue(hasattr(self.my_file_storage, "__objects"))
+
+    def test_methods(self):
+        self.assertTrue(hasattr(FileStorage, "all"))
+        self.assertTrue(hasattr(FileStorage, "new"))
+        self.assertTrue(hasattr(FileStorage, "save"))
+        self.assertTrue(hasattr(FileStorage, "reload"))
+
+    def test_all(self):
+        self.assertEqual(self.my_file_storage.all(),
+                         self.my_file_storage._FileStorage__objects)
+
+    def test_new(self):
+        new_obj = BaseModel()
+        self.my_file_storage.new(new_obj)
+        key = "{}.{}".format(type(new_obj).__name__, new_obj.id)
+        self.assertIn(key, self.my_file_storage.all())
+
+    def test_save(self):
+        self.my_file_storage.save()
+        with open(self.my_file_storage._FileStorage__file_path, "r") as file:
+            self.assertEqual(json.load(file), self.my_file_storage.all())
+
+    def test_reload(self):
+        self.my_file_storage.reload()
+        with open(self.my_file_storage._FileStorage__file_path, "r") as file:
+            self.assertEqual(json.load(file), self.my_file_storage.all())
 
 
 if __name__ == '__main__':
