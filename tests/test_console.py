@@ -2,7 +2,6 @@
 from console import HBNBCommand
 from unittest.mock import create_autospec
 from unittest.mock import patch
-from models.engine.file_storage import FileStorage
 from io import StringIO
 import unittest
 import sys

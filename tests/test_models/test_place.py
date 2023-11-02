@@ -5,8 +5,6 @@ from models.place import Place
 Unittest Module for Place
 """
 import unittest
-import os
-import json
 from models.place import Place
 
 

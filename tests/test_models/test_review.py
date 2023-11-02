@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import unittest
 from models.base_model import BaseModel
-import os
 import datetime
 from datetime import datetime
 from models.review import Review

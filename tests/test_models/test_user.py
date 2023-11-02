@@ -1,22 +1,10 @@
 #!/usr/bin/python3
 
-from uuid import uuid4
-from models import storage
-import uuid
-import sys
 import os.path
 import unittest
-from models import storage
 from models.user import User
 from models.base_model import BaseModel
-from models.engine import file_storage
-from models.engine.file_storage import FileStorage
 import os
-import json
-from models.place import Place
-import datetime
-from datetime import datetime
-from models.amenity import Amenity
 
 
 class TestUser(unittest.TestCase):
