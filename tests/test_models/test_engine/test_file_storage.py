@@ -116,6 +116,9 @@ class TestFileStorage(unittest.TestCase):
         with open(self.file_storage._FileStorage__file_path, "r") as file:
             self.assertEqual(json.load(file), self.file_storage.all())
 
+    def test_id(self):
+        self.assertEqual(str, type(self.obj.id))
+
 
 if __name__ == '__main__':
     unittest.main()
