@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import unittest
 from models.base_model import BaseModel
+from datetime import datetime
 """
 Unittest Module for BaseModel class
 """
@@ -8,6 +9,12 @@ Unittest Module for BaseModel class
 
 class TestUser(unittest.TestCase):
     """Unittest for BaseModel class"""
+
+    def setup(self):
+        """ sets up an instance of BaseModel """
+        self.basemodel = BaseModel()
+        self.basemodel.name = "My First Base Model"
+        self.basemodel.my_number = 89
 
     def test_object_Instantiation(self):
         """ instantiates class """
@@ -58,6 +65,13 @@ class TestUser(unittest.TestCase):
         self.assertEqual(base1.__class__.__name__, 'BaseModel')
         self.assertIsInstance(base1_dict['created_at'], str)
         self.assertIsInstance(base1_dict['updated_at'], str)
+
+    def test_init_no_kwargs(self):
+        """ testing init without kwargs """
+        bm = BaseModel()
+        self.assertIsInstance(bm.id, str)
+        self.assertIsInstance(bm.created_at, datetime)
+        self.assertIsInstance(bm.updated_at, datetime)
 
 
 if __name__ == '__main__':

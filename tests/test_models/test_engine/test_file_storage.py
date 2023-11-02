@@ -14,6 +14,16 @@ import os
 class TestFileStorage(unittest.TestCase):
     """ Unittest for FileStorage class """
 
+    def setUp(self):
+        """ sets up an instance of FileStorage """
+        self.storage = FileStorage()
+        self.obj = BaseModel()
+        self.obj.id = 999999
+
+    def test_all(self):
+        """ test all method """
+        self.assertIsInstance(self.storage, FileStorage)
+
     def test_Instantiation(self):
         """ checks instance is of class BaseModel """
         obj = FileStorage()
@@ -48,7 +58,7 @@ class TestFileStorage(unittest.TestCase):
         a_storage = FileStorage()
         try:
             os.remove("file.json")
-        except:
+        except FileNotFoundError:
             pass
         with open("file.json", "w") as f:
             f.write("{}")
