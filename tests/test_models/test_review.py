@@ -3,7 +3,6 @@ import unittest
 from models.review import Review
 import datetime
 from models.base_model import BaseModel
-from models import storage
 """
 Unittest Module for Review class
 """
@@ -51,18 +50,18 @@ class TestUser(unittest.TestCase):
         self.assertTrue(hasattr(Review, "to_dict"))
 
     def test_datetime_attributes(self):
-        self.assertIsInstance(self.my_review.created_at, datetime)
-        self.assertIsInstance(self.my_review.updated_at, datetime)
+        self.assertIsInstance(self.review.created_at, datetime)
+        self.assertIsInstance(self.review.updated_at, datetime)
 
     def test_attribute_existence(self):
-        self.assertTrue(hasattr(self.my_review, "place_id"))
-        self.assertTrue(hasattr(self.my_review, "user_id"))
-        self.assertTrue(hasattr(self.my_review, "text"))
+        self.assertTrue(hasattr(self.review, "place_id"))
+        self.assertTrue(hasattr(self.review, "user_id"))
+        self.assertTrue(hasattr(self.review, "text"))
 
     def test_save(self):
-        old_updated_at = self.my_review.updated_at
-        self.my_review.save()
-        self.assertNotEqual(old_updated_at, self.my_review.updated_at)
+        old_updated_at = self.review.updated_at
+        self.review.save()
+        self.assertNotEqual(old_updated_at, self.review.updated_at)
 
 
 if __name__ == '__main__':
