@@ -9,6 +9,9 @@ Unittest Module for State class
 class TestUser(unittest.TestCase):
     ''' Unittest for State class '''
 
+    def setUp(self):
+        self.state = State()
+
     def test_object_Instantiation(self):
         ''' instantiates class '''
         self.state = State()
