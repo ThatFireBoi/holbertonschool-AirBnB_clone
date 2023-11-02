@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-import unittest
-from models.review import Review
+
 import datetime
-from models.base_model import BaseModel
+from datetime import datetime
+from models.review import Review
+
 """
 Unittest Module for Review class
 """

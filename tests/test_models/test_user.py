@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
+import os.path
 import unittest
-import os
 from models.user import User
 from models.base_model import BaseModel
+import os
 
 
 class TestUser(unittest.TestCase):

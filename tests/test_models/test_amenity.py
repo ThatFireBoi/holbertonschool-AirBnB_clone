@@ -2,8 +2,6 @@
 import unittest
 from models.amenity import Amenity
 
-import unittest
-from models.amenity import Amenity
 
 """
 Unittest Module for Amenity class
