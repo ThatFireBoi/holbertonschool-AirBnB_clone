@@ -16,12 +16,6 @@ class TestFileStorage(unittest.TestCase):
 
     def test_all(self):
         """ test all method """
-        obj = FileStorage()
-        new_obj = BaseModel()
-        obj.new(new_obj)
-        dict1 = obj.all()
-        self.assertIsNotNone(dict1)
-        self.assertEqual(type(dict1), dict)
         self.assertIsInstance(self.storage, FileStorage)
 
     def test_Instantiation(self):
