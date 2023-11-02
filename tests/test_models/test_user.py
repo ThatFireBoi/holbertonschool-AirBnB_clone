@@ -85,21 +85,5 @@ class TestUser(unittest.TestCase):
                                                  self.my_user.__dict__))
 
 
-def test_attribute_values(self):
-    self.assertEqual(self.my_city.name, "")
-    self.assertEqual(self.my_city.state_id, "")
-
-
-def test_str(self):
-    self.assertEqual(str(self.my_city), "[City] ({}) {}".format(
-        self.my_city.id, self.my_city.__dict__))
-
-
-def test_save(self):
-    old_updated_at = self.my_city.updated_at
-    self.my_city.save()
-    self.assertNotEqual(old_updated_at, self.my_city.updated_at)
-
-
 if __name__ == "__main__":
     unittest.main()
