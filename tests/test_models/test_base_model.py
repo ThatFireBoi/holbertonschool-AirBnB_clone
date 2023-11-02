@@ -78,6 +78,16 @@ class TestUser(unittest.TestCase):
         bm = BaseModel()
         self.assertIsInstance(bm.id, str)
 
+    def test_created_at(self):
+        """ testing created_at """
+        bm = BaseModel()
+        self.assertIsInstance(bm.created_at, datetime)
+
+    def test_updated_at(self):
+        """ testing updated_at """
+        bm = BaseModel()
+        self.assertIsInstance(bm.updated_at, datetime)
+
 
 if __name__ == '__main__':
     unittest.main()
