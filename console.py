@@ -41,7 +41,8 @@ class HBNBCommand(cmd.Cmd):
         and prints the id."""
         if not arg:
             print("** class name missing **")
-        elif arg not in ["BaseModel", "User", "State", "City", "Amenity", "Review", "Place"]:
+        elif arg not in ["BaseModel", "User", "State",
+                         "City", "Amenity", "Review", "Place"]:
             print("** class doesn't exist **")
         else:
             if arg == "BaseModel":
@@ -67,7 +68,8 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
-        elif args[0] not in ["BaseModel", "User", "State", "City", "Amenity", "Review", "Place"]:
+        elif args[0] not in ["BaseModel", "User", "State",
+                             "City", "Amenity", "Review", "Place"]:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
@@ -84,7 +86,8 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
-        elif args[0] not in ["BaseModel", "User", "State", "City", "Amenity", "Review", "Place"]:
+        elif args[0] not in ["BaseModel", "User", "State",
+                             "City", "Amenity", "Review", "Place"]:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
@@ -99,7 +102,8 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """Prints all string representation of all instances based or not on
         the class name."""
-        if arg not in ["BaseModel", "User", "State", "City", "Amenity", "Review", "Place", ""]:
+        if arg not in ["BaseModel", "User", "State",
+                       "City", "Amenity", "Review", "Place", ""]:
             print("** class doesn't exist **")
         else:
             for key, value in storage.all().items():
@@ -115,7 +119,8 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
-        elif args[0] not in ["BaseModel", "User", "State", "City", "Amenity", "Review", "Place"]:
+        elif args[0] not in ["BaseModel", "User", "State",
+                             "City", "Amenity", "Review", "Place"]:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
