@@ -73,6 +73,25 @@ class TestUser(unittest.TestCase):
         self.assertIsInstance(bm.created_at, datetime)
         self.assertIsInstance(bm.updated_at, datetime)
 
+    def test_id(self):
+        """ testing id """
+        bm = BaseModel()
+        self.assertIsInstance(bm.id, str)
+
+    def test_created_at(self):
+        """ testing created_at """
+        bm = BaseModel()
+        self.assertIsInstance(bm.created_at, datetime)
+
+    def test_updated_at(self):
+        """ testing updated_at """
+        bm = BaseModel()
+        self.assertIsInstance(bm.updated_at, datetime)
+
+    def tearDown(self):
+        """ tears down instance of BaseModel"""
+        del self.basemodel
+
 
 if __name__ == '__main__':
     unittest.main()
