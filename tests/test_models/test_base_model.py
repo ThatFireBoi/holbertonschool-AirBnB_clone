@@ -88,6 +88,30 @@ class TestUser(unittest.TestCase):
         bm = BaseModel()
         self.assertIsInstance(bm.updated_at, datetime)
 
+    def test_attribute_existence(self):
+        self.assertTrue(hasattr(self.my_base_model, "id"))
+        self.assertTrue(hasattr(self.my_base_model, "created_at"))
+        self.assertTrue(hasattr(self.my_base_model, "updated_at"))
+
+    def test_attribute_values(self):
+        self.assertIsInstance(self.my_base_model.id, str)
+        self.assertIsInstance(self.my_base_model.created_at, datetime)
+        self.assertIsInstance(self.my_base_model.updated_at, datetime)
+
+    def test_methods(self):
+        self.assertTrue(hasattr(BaseModel, "save"))
+        self.assertTrue(hasattr(BaseModel, "to_dict"))
+
+    def test_str(self):
+        self.assertEqual(str(self.my_base_model),
+                         "[BaseModel] ({}) {}".format(self.my_base_model.id,
+                                                      self.my_base_model.__dict__))
+
+    def test_save(self):
+        old_updated_at = self.my_base_model.updated_at
+        self.my_base_model.save()
+        self.assertNotEqual(old_updated_at, self.my_base_model.updated_at)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -59,6 +59,11 @@ class TestUser(unittest.TestCase):
         self.assertTrue(hasattr(self.my_review, "user_id"))
         self.assertTrue(hasattr(self.my_review, "text"))
 
+    def test_save(self):
+        old_updated_at = self.my_review.updated_at
+        self.my_review.save()
+        self.assertNotEqual(old_updated_at, self.my_review.updated_at)
+
 
 if __name__ == '__main__':
     unittest.main()
