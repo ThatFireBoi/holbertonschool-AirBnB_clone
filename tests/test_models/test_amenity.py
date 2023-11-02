@@ -48,22 +48,6 @@ class TestAmenity(unittest.TestCase):
                                   str(self.amenity.id), self.amenity.__dict__)
         self.assertEqual(print(s), print(self.amenity))
 
-    def test_inheritance(self):
-        self.assertTrue(issubclass(Review, BaseModel))
-
-    def test_methods(self):
-        self.assertTrue(hasattr(Review, "save"))
-        self.assertTrue(hasattr(Review, "to_dict"))
-
-    def test_datetime_attributes(self):
-        self.assertIsInstance(self.my_review.created_at, datetime)
-        self.assertIsInstance(self.my_review.updated_at, datetime)
-
-    def test_attribute_existence(self):
-        self.assertTrue(hasattr(self.my_review, "place_id"))
-        self.assertTrue(hasattr(self.my_review, "user_id"))
-        self.assertTrue(hasattr(self.my_review, "text"))
-
 
 if __name__ == '__main__':
     unittest.main()
