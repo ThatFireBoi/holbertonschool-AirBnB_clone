@@ -48,7 +48,7 @@ class TestFileStorage(unittest.TestCase):
         a_storage = FileStorage()
         try:
             os.remove("file.json")
-        except:
+        except FileNotFoundError:
             pass
         with open("file.json", "w") as f:
             f.write("{}")

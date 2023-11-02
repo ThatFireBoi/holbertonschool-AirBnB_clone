@@ -9,6 +9,12 @@ Unittest Module for BaseModel class
 class TestUser(unittest.TestCase):
     """Unittest for BaseModel class"""
 
+    def setup(self):
+        """ sets up an instance of BaseModel """
+        self.basemodel = BaseModel()
+        self.basemodel.name = "My First Base Model"
+        self.basemodel.my_number = 89
+
     def test_object_Instantiation(self):
         """ instantiates class """
         self.basemodel = BaseModel()
@@ -58,6 +64,10 @@ class TestUser(unittest.TestCase):
         self.assertEqual(base1.__class__.__name__, 'BaseModel')
         self.assertIsInstance(base1_dict['created_at'], str)
         self.assertIsInstance(base1_dict['updated_at'], str)
+
+    def test_id(self):
+        """ testing id """
+        self.assertEqual(type(self.basemodel.id), str)
 
 
 if __name__ == '__main__':
