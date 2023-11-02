@@ -86,11 +86,11 @@ class TestFileStorage(unittest.TestCase):
             key2 = key
         self.assertEqual(dict1[key1].to_dict(), dict2[key2].to_dict())
 
-    def test_methods(self):
-        self.assertTrue(hasattr(FileStorage, "all"))
-        self.assertTrue(hasattr(FileStorage, "new"))
-        self.assertTrue(hasattr(FileStorage, "save"))
-        self.assertTrue(hasattr(FileStorage, "reload"))
+    def test_attribute_existence(self):
+        self.assertTrue(hasattr(self.file_storage, "__file_path"))
+        self.assertTrue(hasattr(self.file_storage, "__objects"))
+
+
 
 
 if __name__ == '__main__':
