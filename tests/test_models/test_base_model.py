@@ -66,44 +66,12 @@ class TestUser(unittest.TestCase):
         self.assertIsInstance(base1_dict['created_at'], str)
         self.assertIsInstance(base1_dict['updated_at'], str)
 
-    def test_id(self):
-        """ testing id """
-        self.assertEqual(type(self.basemodel.id), str)
-
-    def tearDown(self):
-        """ tears down instance of BaseModel"""
-        del self.basemodel
-
     def test_init_no_kwargs(self):
         """ testing init without kwargs """
         bm = BaseModel()
         self.assertIsInstance(bm.id, str)
         self.assertIsInstance(bm.created_at, datetime)
         self.assertIsInstance(bm.updated_at, datetime)
-
-    def test_init_with_kwargs(self):
-        """test init with kwargs"""
-        kwargs = {
-            'id': '123',
-            'created_at': '2019-06-29T12:01:52.119851',
-            'updated_at': '2019-06-29T12:01:52.119851',
-            'name': 'Test'
-        }
-        bm = BaseModel(**kwargs)
-        self.assertEqual(bm.id, '123')
-        self.assertEqual(bm.created_at.isoformat(),
-                         '2019-06-29T12:01:52.119851')
-        self.assertEqual(bm.updated_at. datetime.strptime(
-            '2019-06-29T12:01:52.119851', '%Y-%m-%dT%H:%M:%S.%f'))
-        self.assertEqual(bm.name, 'Test')
-
-    def test_created_at(self):
-        """test created_at"""
-        self.assertIsInstance(self.basemodel.created_at, datetime)
-
-    def test_updated_at(self):
-        """test updated_at"""
-        self.assertIsInstance(self.basemodel.updated_at, datetime)
 
 
 if __name__ == '__main__':

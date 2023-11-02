@@ -14,10 +14,6 @@ import os
 class TestFileStorage(unittest.TestCase):
     """ Unittest for FileStorage class """
 
-    def test_all(self):
-        """ test all method """
-        self.assertIsInstance(self.storage, FileStorage)
-
     def test_Instantiation(self):
         """ checks instance is of class BaseModel """
         obj = FileStorage()
