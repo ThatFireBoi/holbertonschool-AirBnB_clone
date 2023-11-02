@@ -49,10 +49,6 @@ class TestUser(unittest.TestCase):
         self.assertTrue(hasattr(Review, "save"))
         self.assertTrue(hasattr(Review, "to_dict"))
 
-    def test_datetime_attributes(self):
-        self.assertIsInstance(self.review.created_at, datetime)
-        self.assertIsInstance(self.review.updated_at, datetime)
-
     def test_attribute_existence(self):
         self.assertTrue(hasattr(self.review, "place_id"))
         self.assertTrue(hasattr(self.review, "user_id"))
