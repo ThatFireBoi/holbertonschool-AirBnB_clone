@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-import os.path
-import json
-import os
 """
 Module file_storage
 Contains a class FileStorage
@@ -9,12 +6,13 @@ that serializes instances to a JSON file and
 deserializes JSON file to instances
 """
 
+import os.path
+import json
+import os
+
 
 class FileStorage():
-    """
-    that serializes instances to a JSON file and deserializes JSON file
-    """
-    ''' initializing values '''
+    """Class that serializes instances to a JSON file and deserializes JSON file"""
     __file_path = "file.json"
     __objects = {}
 
