@@ -24,6 +24,10 @@ class TestUser(unittest.TestCase):
         except FileNotFoundError:
             pass
 
+    def setUp(self):
+        """set up for testing"""
+        self.my_user = User()
+
     def test_is_subclass(self):
         self.assertTrue(issubclass(self.my_user.__class__, BaseModel), True)
 

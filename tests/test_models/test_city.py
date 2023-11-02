@@ -9,6 +9,9 @@ Unittest Module for City class
 class TestUser(unittest.TestCase):
     """ Unittest for City class """
 
+    def setUp(self):
+        self.city = City()
+
     def test_object_Instantiation(self):
         """ instantiates class """
         self.city = City()
@@ -41,6 +44,25 @@ class TestUser(unittest.TestCase):
         s = "[{}] ({}) {}".format(self.city.__class__.__name__,
                                   str(self.city.id), self.city.__dict__)
         self.assertEqual(print(s), print(self.city))
+
+    def test_name_assignment(self):
+        """ testing name assignment """
+        self.city = City()
+        self.assertEqual(self.city.name, "")
+        self.city.name = "WonderLand"
+        self.assertEqual(self.city.name, "WonderLand")
+
+    def test_state_id_assignment(self):
+        """ testing state_id assignment """
+        self.city = City()
+        self.assertEqual(self.city.state_id, "")
+        self.city.state_id = "Won67L0nd"
+        self.assertEqual(self.city.state_id, "Won67L0nd")
+
+    def test_id_attr(self):
+        """ testing id attr """
+        self.city = City()
+        self.assertTrue(hasattr(self.city, "id"))
 
 
 if __name__ == '__main__':

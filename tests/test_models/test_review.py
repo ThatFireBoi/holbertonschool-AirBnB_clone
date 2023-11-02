@@ -9,6 +9,9 @@ Unittest Module for Review class
 class TestUser(unittest.TestCase):
     ''' Unittest for Review class '''
 
+    def setUp(self):
+        self.review = Review()
+
     def test_object_Instantiation(self):
         ''' instantiates class '''
         self.review = Review()
