@@ -88,6 +88,10 @@ class TestUser(unittest.TestCase):
         bm = BaseModel()
         self.assertIsInstance(bm.updated_at, datetime)
 
+    def tearDown(self):
+        """ tears down instance of BaseModel"""
+        del self.basemodel
+
 
 if __name__ == '__main__':
     unittest.main()
