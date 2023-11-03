@@ -41,6 +41,18 @@ class TestAmenity(unittest.TestCase):
                                   str(self.amenity.id), self.amenity.__dict__)
         self.assertEqual(print(s), print(self.amenity))
 
+    def test_attribute_values(self):
+        self.assertEqual(self.amenity.name, "")
+
+    def test_attribute_assignment(self):
+        self.amenity.name = "Pool"
+        self.assertEqual(self.amenity.name, "Pool")
+
+    def test_save(self):
+        old_updated_at = self.amenity.updated_at
+        self.amenity.save()
+        self.assertNotEqual(old_updated_at, self.amenity.updated_at)
+
 
 if __name__ == '__main__':
     unittest.main()
