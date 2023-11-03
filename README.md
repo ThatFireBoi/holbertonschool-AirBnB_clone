@@ -362,6 +362,6 @@ EOF  all  create  destroy  help  quit  show  update
 (hbnb)
 Contributors:
 
-1. Gabriel Castro
-2. Juan Silva
+1. Gabriel Castro <gcf2007@hotmail.com>
+2. Juan Silva <Juansilva.dvm@gmail.com>
    ..........................................................................................................................
