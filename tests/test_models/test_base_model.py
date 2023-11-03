@@ -22,7 +22,6 @@ class TestUser(unittest.TestCase):
         self.base_model.name = "My First Base Model"
         self.base_model.my_number = 89
 
-
     def test_object_Instantiation(self):
         """ instantiates class """
         self.base_model = BaseModel()
@@ -106,7 +105,6 @@ class TestUser(unittest.TestCase):
         self.assertIsInstance(self.created_at, datetime)
         self.assertIsInstance(self.updated_at, datetime)
 
-
     def test_methods(self):
         self.assertTrue(hasattr(BaseModel, "save"))
         self.assertTrue(hasattr(BaseModel, "to_dict"))
@@ -114,12 +112,12 @@ class TestUser(unittest.TestCase):
     def test_str(self):
         self.assertEqual(str(self.base_model),
                          "[BaseModel] ({}) {}".format(self.base_model.id,
- 
+                                                      self.base_model.__dict__))
+
     def test_save(self):
         old_updated_at = self.base_model.updated_at
-        self.my_base_model.save()
+        self.base_model.save()
         self.assertNotEqual(old_updated_at, self.base_model.updated_at)
-
 
 
 if __name__ == '__main__':
