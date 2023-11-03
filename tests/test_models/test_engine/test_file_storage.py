@@ -8,6 +8,7 @@ from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 import os
 import json
+import models
 
 
 class TestFileStorage(unittest.TestCase):
@@ -15,13 +16,13 @@ class TestFileStorage(unittest.TestCase):
 
     def setUp(self):
         """ sets up an instance of FileStorage """
-        self.storage = FileStorage()
+        self.file_storage = FileStorage()
         self.obj = BaseModel()
         self.obj.id = 999999
 
     def test_all(self):
         """ test all method """
-        self.assertIsInstance(self.storage, FileStorage)
+        self.assertIsInstance(self.file_storage, FileStorage)
 
     def test_Instantiation(self):
         """ checks instance is of class BaseModel """
@@ -89,8 +90,6 @@ class TestFileStorage(unittest.TestCase):
     def test_attribute_existence(self):
         self.assertTrue(hasattr(self.file_storage, "__file_path"))
         self.assertTrue(hasattr(self.file_storage, "__objects"))
-
-
 
 
 if __name__ == '__main__':
