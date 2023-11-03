@@ -9,6 +9,7 @@ from models import storage
 from models import storage
 import datetime
 from datetime import datetime
+import models
 
 
 class BaseModel():
@@ -19,18 +20,16 @@ class BaseModel():
         initializes the values
         '''
         if kwargs:
-            dtf = '%Y-%m-%dT%H:%M:%S.%f'
-            k_dict = kwargs.copy()
-            del k_dict["__class__"]
-            for key in k_dict:
-                if ("created_at" == key or "updated_at" == key):
-                    k_dict[key] = datetime.strptime(k_dict[key], dtf)
-            self.__dict__ = k_dict
+            kwargs['created_at'] = datetime.strptime(kwargs['created_at'],
+                                                     '%Y-%m-%dT%H:%M:%S.%f')
+
+            kwargs['updated_at'] = datetime.strptime(kwargs['updated_at'],
+                                                     '%Y-%m-%dT%H:%M:%S.%f')
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         '''
@@ -38,8 +37,7 @@ class BaseModel():
         '''
         return ('[{}] ({}) {}'.format(
             self.__class__.__name__,
-            self.id,
-            self.__class__.__dict__))
+            self.id, self.__dict__))
 
     def save(self):
         '''
@@ -47,7 +45,7 @@ class BaseModel():
         with the current datetime
         '''
         self.updated_at = datetime.now()
-        storage.save()
+    models.storage.save()
 
     def to_dict(self):
         '''
