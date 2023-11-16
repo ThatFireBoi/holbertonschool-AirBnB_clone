@@ -10,7 +10,7 @@
     padding-right: 30px;
 }
 
-button {
+.search-button {
     font-size: 18px;
     background-color: #FF5A5F;
     color: #FFFFFF;
@@ -21,6 +21,6 @@ button {
     margin: auto, 30px, auto, auto;
 }
 
-button:hover {
+.search-button:hover {
     opacity: 90%;
 }
