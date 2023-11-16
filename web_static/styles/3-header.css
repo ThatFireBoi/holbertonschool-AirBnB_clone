@@ -3,12 +3,8 @@ header {
     height: 70px;
     width: 100%;
     border-bottom: 1px solid #CCCCCC;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding-left: 20px;
+    flex-shrink: 0;
     background-image: url(../images/logo.png);
-    background-size: contain;
     background-repeat: no-repeat;
     background-position: 20px center;
 }
